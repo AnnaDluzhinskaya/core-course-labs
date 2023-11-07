@@ -1,0 +1,6 @@
+---
+- name: Deploy image
+  hosts: localhost
+  become: yes
+  roles:
+    - web_app

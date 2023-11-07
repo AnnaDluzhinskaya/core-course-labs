@@ -1,11 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PetApp.Converters;
 using PetApp.Models;
+using Prometheus;
 
 namespace PetApp.Controllers;
 
 public class DogController : Controller
 {
+    private readonly Counter _convertAgeCalls
+        = Metrics.CreateCounter("convert_age_calls", "Number of calls of ConvertAge route");
+
     public IActionResult Index()
     {
         return View();
@@ -14,6 +18,8 @@ public class DogController : Controller
     [HttpPost]
     public IActionResult ConvertAge(Dog model)
     {
+        _convertAgeCalls.Inc();
+
         if (!ModelState.IsValid)
         {
             return View("Index", model);
