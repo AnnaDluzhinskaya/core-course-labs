@@ -7,6 +7,18 @@
     </PropertyGroup>
 
 
+    <ItemGroup>
+      <PackageReference Include="prometheus-net" Version="8.0.1" />
+      <PackageReference Include="prometheus-net.AspNetCore" Version="8.0.1" />
+    </ItemGroup>
 
+
+
+
+    <ItemGroup>
+      <None Update="volume\visits">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
 
 </Project>
